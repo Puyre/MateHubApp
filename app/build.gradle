@@ -8,12 +8,12 @@ apply from: 'dependencies.gradle'
 
 android {
     namespace 'com.scheduledev.matehubapp'
-    compileSdk 33
+    compileSdk compSdkVersion
 
     defaultConfig {
         applicationId "com.scheduledev.matehubapp"
-        minSdk 21
-        targetSdk 33
+        minSdk mSdkVersion
+        targetSdk tarSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -53,6 +53,14 @@ dependencies {
     testImplementation junit
     androidTestImplementation android_test
 
+    implementation core_ktx
+    implementation activity
+    implementation compose_ui
+    implementation preview_support
+    implementation material
+    androidTestImplementation ui_test
+    debugImplementation ui_test_debug
+    debugImplementation ui_tooling
 
     // dagger 2
     implementation dagger
@@ -61,24 +69,7 @@ dependencies {
     kapt dagger_android_processor
     kapt dagger_compiler
 
-    // Material Design 3
-    implementation material
-
-    // or only import the main APIs for the underlying toolkit systems,
-    // such as input and measurement/layout
-    implementation compose_ui
-
-    // Android Studio Preview support
-    implementation preview_support
-    debugImplementation preview_support_debug
-
-    // UI Tests
-    androidTestImplementation ui_test
-    debugImplementation ui_test_debug
-
-    //// Optional - Integration with activities
-    implementation activity
-    //// Optional - Integration with ViewModels
+    // Optional - Integration with ViewModels
     implementation view_model
 
     //coroutines
@@ -87,6 +78,4 @@ dependencies {
 
     //serialization
     implementation serialization
-
-    implementation core_ktx
 }
