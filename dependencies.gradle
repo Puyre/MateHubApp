@@ -1,0 +1,71 @@
+ext {
+    compSdkVersion = 33
+    mSdkVersion = 24
+    tarSdkVersion = 33
+
+    def coroutines_android_version = "1.4.3"
+    def dagger_version = "2.45"
+    def activity_version = "1.6.1"
+    def view_model_version = "2.5.1"
+    def core_ktx_version = "1.9.0"
+    def serialization_version = "1.4.1"
+    def room_version = "2.4.0"
+    def libres_version = "1.1.2"
+    def retrofit_version = "2.9.0"
+
+    //compose
+    compose_version = "1.3.3"
+
+    // Coroutines
+    kotlinx_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android_version"
+    kotlinx_coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
+
+    // room
+    room_runtime = "androidx.room:room-runtime:$room_version"
+    room_kapt = "androidx.room:room-compiler:$room_version"
+    room_ktx = "androidx.room:room-ktx:$room_version"
+
+    //libres compose
+    libres = "com.adeo.libres:libres-compose:$libres_version"
+
+    // material
+    material = "androidx.compose.material3:material3:1.0.0-alpha02"
+
+    // compose ui
+    compose_ui = "androidx.compose.ui:ui:$compose_version"
+
+    // preview
+    ui_tooling = "androidx.compose.ui:ui-tooling:$compose_version"
+    preview_support = "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    preview_support_debug = "androidx.compose.ui:ui-tooling-preview:$compose_version"
+
+    //UI Tests
+    ui_test = "androidx.compose.ui:ui-test-junit4:$compose_version"
+    ui_test_debug = "androidx.compose.ui:ui-test-manifest:$compose_version"
+
+    //activity
+    activity = "androidx.activity:activity-compose:$activity_version"
+
+    //view model
+    view_model = "androidx.lifecycle:lifecycle-viewmodel-compose:$view_model_version"
+
+    //core
+    core_ktx = "androidx.core:core-ktx:$core_ktx_version"
+
+    //serialization
+    serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version"
+
+    //test
+    junit = "junit:junit:4.13.2"
+    android_test = "androidx.test.ext:junit:1.1.3"
+
+    // dagger 2
+    dagger = "com.google.dagger:dagger:$dagger_version"
+    dagger_android = "com.google.dagger:dagger-android:$dagger_version"
+    dagger_android_support = "com.google.dagger:dagger-android-support:$dagger_version"
+    dagger_android_processor = "com.google.dagger:dagger-android-processor:$dagger_version"
+    dagger_compiler = "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //retrofit
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
+}
