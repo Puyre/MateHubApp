@@ -84,6 +84,12 @@ dependencies {
     //serialization
     implementation serialization
 
+    implementation retrofit
+    implementation httpLoggingInterceptor
+    implementation converter_factory
+
+    implementation encrypted_prefs
+
     implementation project(":data")
     implementation project(":domain")
 }

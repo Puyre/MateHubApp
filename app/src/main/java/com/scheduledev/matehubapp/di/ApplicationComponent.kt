@@ -1,10 +1,9 @@
 package com.scheduledev.matehubapp.di
 
 import com.scheduledev.matehubapp.MateHubApp
-import com.scheduledev.matehubapp.di.modules.ActivityModule
-import com.scheduledev.matehubapp.di.modules.ApplicationModule
-import com.scheduledev.matehubapp.di.modules.UseCasesModule
-import com.scheduledev.matehubapp.di.modules.ViewModelModule
+import com.scheduledev.matehubapp.di.modules.*
+import com.sheduledev.data.di.modules.LocalModule
+import com.sheduledev.data.di.modules.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -20,6 +19,9 @@ import javax.inject.Singleton
         ApplicationModule::class,
         ViewModelModule::class,
         UseCasesModule::class,
+        NetworkModule::class,
+        LocalModule::class,
+        RepositoryModule::class
     ]
 )
 interface ApplicationComponent : AndroidInjector<MateHubApp> {
