@@ -85,4 +85,5 @@ dependencies {
     implementation serialization
 
     implementation project(":data")
+    implementation project(":domain")
 }

@@ -7,7 +7,7 @@ plugins {
 apply from: '../dependencies.gradle'
 
 android {
-    namespace 'com.scheduledev.data'
+    namespace 'com.sheduledev.domain'
     compileSdk compSdkVersion
 
     defaultConfig {
@@ -45,17 +45,11 @@ android {
 }
 
 dependencies {
+
     testImplementation junit
     androidTestImplementation android_test
 
     implementation core_ktx
-    implementation activity
-    implementation compose_ui
-    implementation preview_support
-    implementation material
-    androidTestImplementation ui_test
-    debugImplementation ui_test_debug
-    debugImplementation ui_tooling
 
     // dagger 2
     implementation dagger
@@ -63,16 +57,7 @@ dependencies {
     implementation dagger_android_support
     kapt dagger_android_processor
     kapt dagger_compiler
-
-    // Optional - Integration with ViewModels
-    implementation view_model
-
     //coroutines
     implementation kotlinx_coroutines_core
     implementation kotlinx_coroutines_android
-
-    //serialization
-    implementation serialization
-
-    implementation project(":domain")
 }
