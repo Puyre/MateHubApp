@@ -16,3 +16,4 @@ rootProject.name = "MateHubApp"
 include ':app'
 include ':data'
 include ':domain'
+include ':auth'
