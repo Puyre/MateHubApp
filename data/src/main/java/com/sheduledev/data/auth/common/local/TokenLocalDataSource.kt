@@ -1,11 +1,11 @@
-package com.sheduledev.data.auth.local
+package com.sheduledev.data.auth.common.local
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.sheduledev.domain.model.TokenPair
 import javax.inject.Inject
 
-class AuthLocalDataSource @Inject constructor(private val prefs: SharedPreferences) {
+class TokenLocalDataSource @Inject constructor(private val prefs: SharedPreferences) {
 
     companion object {
         const val ACCESS_TOKEN_KEY = "ACCESS_TOKEN_KEY"

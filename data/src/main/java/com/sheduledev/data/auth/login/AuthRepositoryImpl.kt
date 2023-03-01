@@ -1,14 +1,14 @@
-package com.sheduledev.data.auth
+package com.sheduledev.data.auth.login
 
-import com.sheduledev.data.auth.local.AuthLocalDataSource
-import com.sheduledev.data.auth.network.AuthRemoteDataSource
+import com.sheduledev.data.auth.common.local.TokenLocalDataSource
+import com.sheduledev.data.auth.login.network.AuthRemoteDataSource
 import com.sheduledev.domain.model.TokenPair
 import com.sheduledev.domain.repo.AuthRepository
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val remote: AuthRemoteDataSource,
-    private val local: AuthLocalDataSource
+    private val local: TokenLocalDataSource
 ) :
     AuthRepository {
 

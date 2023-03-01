@@ -1,7 +1,7 @@
 package com.sheduledev.data.di.modules
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.sheduledev.data.auth.network.AuthApi
+import com.sheduledev.data.auth.login.network.AuthApi
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
