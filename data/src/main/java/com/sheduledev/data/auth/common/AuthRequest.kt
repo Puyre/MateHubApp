@@ -1,4 +1,4 @@
-package com.sheduledev.data.auth.network
+package com.sheduledev.data.auth.common
 
 import kotlinx.serialization.Serializable
 
