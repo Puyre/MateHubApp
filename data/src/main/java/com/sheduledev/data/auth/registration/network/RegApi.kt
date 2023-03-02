@@ -7,6 +7,6 @@ import retrofit2.http.POST
 
 interface RegApi {
 
-    @POST("signup")
+    @POST("register")
     suspend fun performReg(@Body body: AuthRequest): AuthResponse
 }
