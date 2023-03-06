@@ -32,7 +32,7 @@ ext {
     libres = "com.adeo.libres:libres-compose:$libres_version"
 
     // material
-    material = "androidx.compose.material3:material3:1.0.0-alpha02"
+    material = "androidx.compose.material3:material3:1.0.1"
 
     // compose ui
     compose_ui = "androidx.compose.ui:ui:$compose_version"
