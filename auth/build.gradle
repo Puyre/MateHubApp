@@ -56,6 +56,7 @@ dependencies {
     implementation compose_ui
     implementation preview_support
     implementation material
+    implementation material_icons
     androidTestImplementation ui_test
     debugImplementation ui_test_debug
     debugImplementation ui_tooling
