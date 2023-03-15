@@ -21,12 +21,14 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    authViewModel: AuthViewModel = viewModel()
+) {
     Scaffold(topBar = { Toolbar() }, content = { paddingValues ->
-
         Body(paddingValues)
     })
 
@@ -103,7 +105,6 @@ fun Body(rootPadding: PaddingValues) {
             modifier = Modifier.fillMaxWidth()
         ) {
             OutlinedButton(
-                border = BorderStroke(width = 1.dp, color = Color(0xFF123123)),
                 onClick = {
 
                 },

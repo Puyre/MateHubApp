@@ -27,7 +27,7 @@ private val LightColorScheme = lightColorScheme(
     primary = Primary,
     secondary = Secondary,
     tertiary = Tertiary,
-    outline = Primary
+    outline = Primary,
 )
 
 @Composable
