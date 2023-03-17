@@ -34,7 +34,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.3.2'
+        kotlinCompilerExtensionVersion '1.4.3'
     }
     packagingOptions {
         resources {
@@ -61,6 +61,7 @@ dependencies {
     androidTestImplementation ui_test
     debugImplementation ui_test_debug
     debugImplementation ui_tooling
+    implementation runtime_compose
 
     // dagger 2
     implementation dagger
