@@ -6,14 +6,18 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class LocalModule {
 
     @Provides
     @Singleton
-    fun provideEncryptedSharedPrefs(context: Context): SharedPreferences {
+    fun provideEncryptedSharedPrefs(@ApplicationContext context: Context): SharedPreferences {
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
         return EncryptedSharedPreferences.create(

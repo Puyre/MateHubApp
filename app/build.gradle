@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 apply from: '../dependencies.gradle'
@@ -69,8 +70,9 @@ dependencies {
 
     // dagger 2
     implementation dagger
-    implementation dagger_android
-    implementation dagger_android_support
+    implementation dagger_navigation_compose
+    implementation dagger_hilt_work
+    implementation dagger_hilt_work_ktx
     kapt dagger_android_processor
     kapt dagger_compiler
 
