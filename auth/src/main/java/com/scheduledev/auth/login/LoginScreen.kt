@@ -8,11 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,7 +30,14 @@ fun LoginScreen(
     val state by authViewModel.screenStateLiveData.observeAsState()
 
     Scaffold(topBar = { Toolbar() }, content = { paddingValues ->
-        Body(paddingValues, true)
+        Body(paddingValues, state is LoginScreenState.Loading, loginClick = { email, password ->
+            authViewModel.obtainEvent(
+                LoginScreenEvent.LoginEvent(
+                    email = email,
+                    password = password
+                )
+            )
+        })
     })
 
 }
@@ -54,7 +58,11 @@ fun Toolbar() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Body(rootPadding: PaddingValues, isLoading: Boolean) {
+fun Body(
+    rootPadding: PaddingValues,
+    isLoading: Boolean,
+    loginClick: (email: String, password: String) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -110,7 +118,7 @@ fun Body(rootPadding: PaddingValues, isLoading: Boolean) {
         ) {
             OutlinedButton(
                 onClick = {
-
+                    loginClick(emailText.value, passwordText.value)
                 },
                 modifier = Modifier
                     .padding(top = 12.dp)

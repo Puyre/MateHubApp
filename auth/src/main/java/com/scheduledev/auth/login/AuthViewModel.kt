@@ -30,7 +30,7 @@ class AuthViewModel @Inject constructor(
             try {
                 authUseCase(login = event.email, password = event.password)
             } catch (e: Exception) {
-                _screenStateLiveData.postValue(LoginScreenState.Error(message = "Error бля"))
+                _screenStateLiveData.postValue(LoginScreenState.Error(exc = e))
             }
         }
     }
