@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,18 +29,34 @@ fun LoginScreen(
 ) {
 
     val state by authViewModel.screenStateLiveData.observeAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    Scaffold(
+        topBar = { Toolbar() },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
+        content = { paddingValues ->
 
-    Scaffold(topBar = { Toolbar() }, content = { paddingValues ->
-        Body(paddingValues, state is LoginScreenState.Loading, loginClick = { email, password ->
-            authViewModel.obtainEvent(
-                LoginScreenEvent.LoginEvent(
-                    email = email,
-                    password = password
-                )
-            )
+            Body(
+                paddingValues,
+                state is LoginScreenState.Loading,
+                loginClick = { email, password ->
+                    authViewModel.obtainEvent(
+                        LoginScreenEvent.LoginEvent(
+                            email = email,
+                            password = password
+                        )
+                    )
+                })
+            if (state is LoginScreenState.Error) {
+                val scope = rememberCoroutineScope()
+                LaunchedEffect(key1 = "") {
+                    scope.launch {
+                        snackbarHostState.showSnackbar(
+                            "Error "
+                        )
+                    }
+                }
+            }
         })
-    })
-
 }
 
 @Composable
