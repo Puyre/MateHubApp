@@ -131,14 +131,17 @@ fun Body(
             shape = RoundedCornerShape(12.dp)
         )
         Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxWidth()
+            contentAlignment = Alignment.BottomCenter,
+            modifier = Modifier.fillMaxSize()
         ) {
             OutlinedButton(
+                shape = RoundedCornerShape(12.dp),
                 onClick = {
                     loginClick(emailText.value, passwordText.value)
                 },
                 modifier = Modifier
+                    .height(64.dp)
+                    .fillMaxWidth()
                     .padding(top = 12.dp)
             ) {
                 if (isLoading) {
