@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.scheduledev.common.handle
 import kotlinx.coroutines.launch
 
 
@@ -51,7 +52,7 @@ fun LoginScreen(
                 LaunchedEffect(key1 = "") {
                     scope.launch {
                         snackbarHostState.showSnackbar(
-                            "Error "
+                            (state as LoginScreenState.Error).exc.handle()
                         )
                     }
                 }
