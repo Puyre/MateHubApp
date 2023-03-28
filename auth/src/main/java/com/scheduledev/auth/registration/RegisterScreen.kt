@@ -1,7 +1,5 @@
-package com.scheduledev.auth.login
+package com.scheduledev.auth.registration
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,23 +15,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
+import com.scheduledev.auth.login.Toolbar
 import com.scheduledev.common.handle
 import kotlinx.coroutines.launch
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(
-    navController: NavController,
-    authViewModel: AuthViewModel = hiltViewModel()
+fun RegisterScreen(
+    registrationViewModel: RegistrationViewModel = hiltViewModel()
 ) {
 
-    val state by authViewModel.screenStateLiveData.observeAsState()
+    val state by registrationViewModel.screenStateLiveData.observeAsState()
     val snackbarHostState = remember { SnackbarHostState() }
     Scaffold(
         topBar = { Toolbar() },
@@ -41,23 +35,22 @@ fun LoginScreen(
         content = { paddingValues ->
 
             Body(
-                navController = navController,
                 paddingValues,
-                state is LoginScreenState.Loading,
-                loginClick = { email, password ->
-                    authViewModel.obtainEvent(
-                        LoginScreenEvent.LoginEvent(
+                state is RegisterScreenState.Loading,
+                registerClick = { email, password ->
+                    registrationViewModel.obtainEvent(
+                        RegisterScreenEvent.RegisterEvent(
                             email = email,
                             password = password
                         )
                     )
                 })
-            if (state is LoginScreenState.Error) {
+            if (state is RegisterScreenState.Error) {
                 val scope = rememberCoroutineScope()
                 LaunchedEffect(key1 = "") {
                     scope.launch {
                         snackbarHostState.showSnackbar(
-                            (state as LoginScreenState.Error).exc.handle()
+                            (state as RegisterScreenState.Error).exc.handle()
                         )
                     }
                 }
@@ -65,27 +58,12 @@ fun LoginScreen(
         })
 }
 
-@Composable
-fun Toolbar() {
-    Row(
-        modifier = Modifier
-            .height(48.dp)
-            .fillMaxWidth()
-            .background(color = Color(0xFF123123)),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text("Matehub", color = Color(0xFFFFFFFF), fontSize = 24.sp)
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Body(
-    navController: NavController,
     rootPadding: PaddingValues,
     isLoading: Boolean,
-    loginClick: (email: String, password: String) -> Unit
+    registerClick: ((email: String, password: String) -> Unit)
 ) {
     Column(
         modifier = Modifier
@@ -140,32 +118,24 @@ fun Body(
             contentAlignment = Alignment.BottomCenter,
             modifier = Modifier.fillMaxSize()
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                OutlinedButton(
-                    shape = RoundedCornerShape(12.dp),
-                    onClick = {
-                        loginClick(emailText.value, passwordText.value)
-                    },
-                    modifier = Modifier
-                        .height(64.dp)
-                        .fillMaxWidth()
-                        .padding(top = 12.dp)
-                ) {
-                    if (isLoading) {
-                        CircularProgressIndicator()
-                    } else {
-                        Text(text = "Здарова заебал", color = Color(0xFF123123))
-                    }
+            OutlinedButton(
+                shape = RoundedCornerShape(12.dp),
+                onClick = {
+                    registerClick(emailText.value, passwordText.value)
+                },
+                modifier = Modifier
+                    .height(64.dp)
+                    .fillMaxWidth()
+                    .padding(top = 12.dp)
+            ) {
+                if (isLoading) {
+                    CircularProgressIndicator()
+                } else {
+                    Text(text = "Registration", color = Color(0xFF123123))
                 }
-                Spacer(modifier = Modifier.height(14.dp))
-                Text(
-                    text = "Create account",
-                    Modifier
-                        .clickable { navController.navigate("register") },
-                    textAlign = TextAlign.Center,
-                )
             }
         }
 
     }
+
 }

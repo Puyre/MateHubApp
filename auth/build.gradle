@@ -62,6 +62,7 @@ dependencies {
     debugImplementation ui_test_debug
     debugImplementation ui_tooling
     implementation runtime_compose
+    implementation navigation_compose
 
     // dagger 2
     implementation dagger

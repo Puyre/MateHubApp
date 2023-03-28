@@ -2,6 +2,7 @@ package com.sheduledev.data.di.modules
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.sheduledev.data.auth.login.network.AuthApi
+import com.sheduledev.data.auth.registration.network.RegApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,5 +40,11 @@ class NetworkModule {
     @Singleton
     fun provideAuthApi(retrofit: Retrofit): AuthApi {
         return retrofit.create(AuthApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRegistrationApi(retrofit: Retrofit): RegApi {
+        return retrofit.create(RegApi::class.java)
     }
 }
